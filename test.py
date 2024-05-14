@@ -154,6 +154,7 @@ if __name__ == '__main__':
     #                             hparams.Data.im_w,
     #                             hparams.Data.im_h,
     #                             num_sample=1)
+    
     # Generate scanpaths and save to JSON
     predictions = gen_scanpaths(generator, env_test, dataloader, hparams.Data.patch_num, hparams.Data.max_traj_length, hparams.Data.im_w, hparams.Data.im_h, num_sample=1)
 

@@ -166,8 +166,6 @@ if __name__ == '__main__':
         json.dump(scanpath_dict, jsonfile, indent=4)
 
 
-
-
     # print(predictions)
     # breakpoint()
     for elem in predictions:

@@ -253,6 +253,7 @@ def get_num_steps(trajs, target_annos, task_names):
         for i, traj in enumerate(task_trajs):
             key = traj['task'] + '_' + traj['name']
             bbox = target_annos[key]
+            # breakpoint()
             step_num = get_num_step2target(traj['X'], traj['Y'], bbox)
             num_steps_task[i] = step_num
             traj['X'] = traj['X'][:step_num]

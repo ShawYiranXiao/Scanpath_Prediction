@@ -40,7 +40,7 @@ if __name__ == '__main__':
     # Load pretrained panoptic_fpn
     cfg = get_cfg()
     cfg.merge_from_file(
-        '/home/zhibyang/github/detectron2/configs/COCO-PanopticSegmentation/panoptic_fpn_R_50_3x.yaml'
+        '/home/cgao037/detectron2/configs/COCO-PanopticSegmentation/panoptic_fpn_R_50_3x.yaml'
     )
     model = build_backbone(cfg).to(device)
     model.eval()
@@ -49,8 +49,11 @@ if __name__ == '__main__':
     model_coco = build_backbone(cfg).to(device)
     model_coco.eval()
     predictor = DefaultPredictor(cfg)
-
+    # breakpoint()
     # Compute DCB
-    img_path = '/home/zhibyang/projects/datasets/coco_search/images/320x512/TP/bottle/000000573206.jpg'
+    img_path = './000000180878.jpg'
     high_feat, low_feat = get_DCBs(img_path, predictor)
     print(high_feat.shape, low_feat.shape)
+    # breakpoint()
+    torch.save(high_feat, './DCBs/HR/car/000000180878.pth.tar')
+    torch.save(low_feat, './DCBs/LR/car/000000180878.pth.tar')

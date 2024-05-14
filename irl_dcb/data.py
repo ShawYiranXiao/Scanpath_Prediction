@@ -50,6 +50,7 @@ class LHF_IRL(Dataset):
 
     def __init__(self, DCB_HR_dir, DCB_LR_dir, initial_fix, img_info, annos,
                  pa, catIds):
+
         self.img_info = img_info
         self.annos = annos
         self.pa = pa
@@ -57,12 +58,19 @@ class LHF_IRL(Dataset):
         self.catIds = catIds
         self.LR_dir = DCB_LR_dir
         self.HR_dir = DCB_HR_dir
+        new_item = 'car_000000180878.jpg'
+        np.append(img_info, new_item)        
+        # breakpoint()
 
     def __len__(self):
         return len(self.img_info)
 
     def __getitem__(self, idx):
         cat_name, img_name = self.img_info[idx].split('_')
+        # if cat_name == "car":
+        #     print(self.img_info[idx].split('_'))
+        # if img_name == "000000180878.jpg":
+        #     breakpoint()
         feat_name = img_name[:-3] + 'pth.tar'
         lr_path = join(self.LR_dir, cat_name.replace(' ', '_'), feat_name)
         hr_path = join(self.HR_dir, cat_name.replace(' ', '_'), feat_name)
